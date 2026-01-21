@@ -1,7 +1,5 @@
 package com.devops.cicd.user;
 
-import com.devops.cicd.PasswordPolicy;
-
 public final class User {
 
     private String email;
