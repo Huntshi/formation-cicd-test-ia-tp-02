@@ -10,7 +10,13 @@ public class UserService {
      * - renvoie l'utilisateur créé
      * - propage les erreurs si les données sont invalides
      */
-    public User register(String email, String password, Role role) {
-        return new User(email, password, role);
+    public UserBuilder register(String email, String password, Role role) {
+        UserBuilder userBuilder = new UserBuilder();
+
+        userBuilder.setEmail(email);
+        userBuilder.setPassword(password);
+        userBuilder.setRole(role);
+
+        return userBuilder;
     }
 }

@@ -2,6 +2,7 @@ package com.devops.cicd;
 
 import com.devops.cicd.user.Role;
 import com.devops.cicd.user.User;
+import com.devops.cicd.user.UserBuilder;
 import com.devops.cicd.user.UserService;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ public class UserServiceFunctionalTest {
         String password = "Abcdef1!";
         Role role = Role.USER;
 
-        User created = service.register(email, password, role);
+        UserBuilder created = service.register(email, password, role);
 
         assertNotNull(created);
         assertEquals("bob.smith@company.io", created.getEmail(), "email must be trimmed on creation");
