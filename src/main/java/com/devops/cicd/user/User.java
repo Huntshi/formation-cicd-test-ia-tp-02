@@ -6,15 +6,7 @@ public final class User {
     private String password;
     private Role role;
 
-    private UserBuilder builder = new UserBuilder();
-
-    // Constructeur privé pour créer à partir d'un UserBuilder
-    private User(UserBuilder builder){
-        this.email = builder.getEmail();
-        this.password = builder.getPassword();
-        this.role = builder.getRole();
-    }
-    // Optionnel : constructeur direct qui valide via UserBuilder (réutilise la logique)
+    // Constructeur direct via UserBuilder
     public User(String email, String password, Role role) {
         UserBuilder b = new UserBuilder();
         b.setEmail(email);
