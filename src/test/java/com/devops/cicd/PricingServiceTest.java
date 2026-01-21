@@ -1,7 +1,6 @@
-package cicd;
+package com.devops.cicd;
 
 import com.devops.cicd.PricingConfig;
-import com.devops.cicd.PricingService;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 

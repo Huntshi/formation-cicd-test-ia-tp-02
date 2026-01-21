@@ -1,4 +1,4 @@
-package cicd;
+package com.devops.cicd;
 
 import com.devops.cicd.user.Role;
 import com.devops.cicd.user.User;
