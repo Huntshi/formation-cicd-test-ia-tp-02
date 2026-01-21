@@ -26,8 +26,11 @@ public class User {
 
         int atCount = 0;
         for (int i = 0; i < emailTrimmed.length(); i++) {
-            if (emailTrimmed.charAt(i) == '@') atCount++;
+            if (emailTrimmed.charAt(i) == '@') {
+                atCount++;
+            }
         }
+
         if (atCount != 1) {
             throw new IllegalArgumentException("email must be valid");
         }
