@@ -2,26 +2,24 @@
 
 ## Outils IA Utilisé
 
-1. zzcz
+J'ai utilisé le chat Copilot Pro directement accessible via Github et le modèle était Chat Gpt5-mini.
 
 
 ## Prompt IA Utilisé
 
-1. prompt initial
+1. Prompt initial
    Tu travailles dans un projet Java Maven et de nouvelles fonctionnalités doivent être développées autour de la gestion d’utilisateurs.
 A partir du fichier de spécifications founit tu dois générer des cas niminaux, des cas limites et des cas d'erreurs afin que cela corresponde aux règles métiers.
 Tu implémenteras aussi la méthode canAccessAdminArea(), la gestion des erreurs (exception), le test fonctionnel sur UserService.register(). Attention, ne code pas l'implémentation Java car je suis le modèle TDD.
 Tout ses tests devront etre écrit et rangé correctement dans la logique de l'arborescence actuelle.
 
-2. prompts améliorés
-```bash
-
-
-```
+2. Prompts améliorés
+Aucun
 
 
 ## Comparaison des tests avec et sans IA
 
+1. Sans IA
 public boolean canAccessAdminArea(User user){
 
     if(user.equals("ADMIN")){
@@ -66,6 +64,8 @@ Other :
 user_canAccessAdminArea_method_is_correct()
 
 userService_create_user_is_correct()
+
+2. Avec IA
 
 ```bash
 package com.example.user;
@@ -263,12 +263,42 @@ public class UserServiceFunctionalTest {
 
 ## Cas de tests proposés par l’IA
 
-1. liste structurée
-2. classification (nominal / limite / erreur)
+1. Liste structurée
+Début avec les cas minimaux dont fonctionnel et nécéssaire à la bonne validation du code. 
+Un cas test au limite pour le mot de passe.
+Plusieurs tests d'erreur pour vérifier tous les cas qui sont censés être faux.
 
+2. Classification (nominal / limite / erreur)
+
+Nominal :
+shouldCreateUser_whenDataIsValid_andTrimEmail()
+shouldAllowAdminAccess_whenRoleIsAdmin()
+shouldDenyAdminAccess_whenRoleIsUser()
+registerShouldReturnUser_whenInputIsValid()
+registerShouldPropagate_whenEmailInvalid()
+registerShouldPropagate_whenPasswordWeak()
+registerShouldPropagate_whenRoleNull()
+
+Limite :
+shouldAcceptPassword_ofLength8_whenMeetsAllPolicyRequirements()
+
+Erreur :
+shouldThrow_whenEmailIsEmpty()
+shouldThrow_whenEmailIsWhitespaceOnly()
+shouldThrow_whenEmailMissingAtSign()
+shouldThrow_whenEmailHasNoLocalOrDomainParts()
+shouldThrow_whenEmailHasNoDotAfterAt()
+shouldThrow_whenEmailHasMultipleAts()
+shouldThrow_whenPasswordIsNull()
+shouldThrow_whenPasswordIsWhitespaceOnly()
+shouldThrow_whenPasswordIsTooWeak()
 
 ## Analyse critique
 
-1. tests conservés
-2. tests rejetés
-3. décisions humaines
+1. Tests conservés
+J'ai décidé de conserver tous les tests proposés car cela correspondait à ce que j'avais prévu lors de l'analyse des specs.
+2. Tests rejetés
+Aucun
+3. Décisions humaines
+C'est surtout au niveau de l'implémentation de la classe User que j'ai ajouté toutes les levées d'exception nécéssaires
+afin de gerer tous les cas possibles et d'obtenir une création d'utilisateur correspondant au spécifications.
