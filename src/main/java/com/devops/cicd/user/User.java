@@ -1,23 +1,20 @@
 package com.devops.cicd.user;
 
-public class User {
+public final class User {
 
-    private final String email;
-    private final String password;
-    private final Role role;
+    private String email;
+    private String password;
+    private Role role;
 
+    // Constructeur direct via UserBuilder
     public User(String email, String password, Role role) {
-        // TODO: appliquer toutes les règles de validation de la spec
-        // - email: obligatoire, trim, format simple
-        // - password: obligatoire, strong (PasswordPolicy.isStrong)
-        // - role: obligatoire (non null)
-        //
-        // En cas d'erreur: IllegalArgumentException avec un message explicite
-        // ("email must be valid", "password must be strong", "role must not be null")
-
-        this.email = email;       // TODO: email doit être normalisé (trim)
-        this.password = password; // TODO: password ne doit pas être modifié
-        this.role = role;         // TODO: role non null
+        UserBuilder b = new UserBuilder();
+        b.setEmail(email);
+        b.setPassword(password);
+        b.setRole(role);
+        this.email = b.getEmail();
+        this.password = b.getPassword();
+        this.role = b.getRole();
     }
 
     public String getEmail() {
@@ -33,7 +30,9 @@ public class User {
     }
 
     public boolean canAccessAdminArea() {
-        // TODO: true uniquement si role == ADMIN
+        if (role == Role.ADMIN) {
+            return true;
+        }
         return false;
     }
 

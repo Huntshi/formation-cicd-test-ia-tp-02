@@ -1,6 +1,5 @@
-package cicd;
+package com.devops.cicd;
 
-import com.devops.cicd.PasswordPolicy;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 

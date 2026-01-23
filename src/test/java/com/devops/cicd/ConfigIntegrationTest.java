@@ -1,4 +1,4 @@
-package cicd;
+package com.devops.cicd;
 
 import org.junit.jupiter.api.Test;
 
